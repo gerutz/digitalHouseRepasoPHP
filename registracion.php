@@ -17,12 +17,12 @@
         
         $errores = validarUsuario($_POST);
 
-//        if(!empty($errores)){
-//            //$usuario = crearUsuario($_POST);            
-//            guardarUsuario($usuario);
-//            guardarImagen($usuario);
-//            loginUsuario();
-//        }
+        if(!empty($errores)){
+            $usuario = crearUsuario($_POST);            
+            guardarUsuario($usuario);
+            //guardarImagen($usuario);
+            //oginUsuario();
+        }
     }
 ?>
 
