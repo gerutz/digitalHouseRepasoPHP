@@ -1,6 +1,3 @@
-<!--
-      PRACTICA DE REPASO  - REGISTRACION Y LOGIN
--->
 <?php
     require_once 'funcionesPractica.php';
 
