@@ -21,11 +21,10 @@
             $usuario = crearUsuario($_POST); 
             guardarUsuario($usuario);
             //guardarImagen($usuario);
-            loginUsuario();
+            enviarPaginaHome();
         }
     }
 ?>
-
 <html>     
     <head>
             <title>Registracion</title>

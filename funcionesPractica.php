@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(E_ALL); ini_set('display_errors', 'On'); 
 function validarUsuario($datosUsuario){
     
     $errores = [];
@@ -37,9 +37,6 @@ function crearUsuario($datosUsuario){
 function guardarUsuario($nuevoUsuario){ 
     
     $usuarioJSON = json_encode($nuevoUsuario);
-    
-    var_dump($usuarioJSON);
-    
     file_put_contents('repositorioUsuarios.json', $usuarioJSON . PHP_EOL, FILE_APPEND);
 }
 
@@ -60,6 +57,9 @@ function traerNuevoId(){
     
 }
 
-function loginUsuario(){
-    header('location:loguearse.php');exit;
+function enviarPaginaHome(){
+    header('Location:paginaBienvenida.php');
+    exit();
 }
+
+?>
