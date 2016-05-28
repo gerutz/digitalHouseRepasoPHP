@@ -30,28 +30,36 @@ function crearUsuario($datosUsuario){
         'password' => password_hash($datosUsuario['pass'], PASSWORD_DEFAULT),
         'id' => traerNuevoId()
     ];
+    
     return $usuario;
 }
 
-function guardarUsuario($nuevoUsuario){  
-    $usuarioJSON = json_decode($nuevoUsuario);
+function guardarUsuario($nuevoUsuario){ 
+    
+    $usuarioJSON = json_encode($nuevoUsuario);
+    
+    var_dump($usuarioJSON);
+    
     file_put_contents('repositorioUsuarios.json', $usuarioJSON . PHP_EOL, FILE_APPEND);
 }
 
 function traerNuevoId(){
     
-    if(!file_exists('repositorioUsuarios.json')){
-        return 1;
-    }else{
-        $usuariosJSON = file_get_contents('repositorioUsuarios.json');
-        $arrayUsuariosJSON = explode(PHP_EOL, $usuariosJSON);
-        $arrayLength = count($arrayUsuariosJSON);        
-        $ultimoUsuarioEnArray = $arrayUsuariosJSON[$arrayLength - 2];
-        $arrayUltimoUsuario = json_decode($ultimoUsuarioEnArray, true);
-        
-        $nuevoID = $arrayUltimoUsuario['id'] + 1;
-        
-        return $nuevoID;  
-    }
+    if (!file_exists("repositorioUsuarios.json"))
+		{
+			return 1;
+		}
+
+		$usuarios = file_get_contents("repositorioUsuarios.json");
+
+		$usuariosArray = explode(PHP_EOL, $usuarios);
+		$ultimoUsuario = $usuariosArray[count($usuariosArray) - 2 ];
+		$ultimoUsuarioArray = json_decode($ultimoUsuario, true);
+
+		return $ultimoUsuarioArray["id"] + 1;
     
+}
+
+function loginUsuario(){
+    header('location:loguearse.php');exit;
 }
